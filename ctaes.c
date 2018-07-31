@@ -446,7 +446,7 @@ static void AES_setup(AES_state* rounds, const uint8_t* key, int nkeywords, int 
     }
 }
 
-static void AES_encrypt(const AES_state* rounds, int nrounds, unsigned char* cipher16, const unsigned char* plain16) {
+void AES_encrypt(const AES_state* rounds, int nrounds, unsigned char* cipher16, const unsigned char* plain16) {
     AES_state s = {{0}};
     int round;
 
@@ -467,7 +467,7 @@ static void AES_encrypt(const AES_state* rounds, int nrounds, unsigned char* cip
     SaveBytes(cipher16, &s);
 }
 
-static void AES_decrypt(const AES_state* rounds, int nrounds, unsigned char* plain16, const unsigned char* cipher16) {
+void AES_decrypt(const AES_state* rounds, int nrounds, unsigned char* plain16, const unsigned char* cipher16) {
     /* Most AES decryption implementations use the alternate scheme
      * (the Equivalent Inverse Cipher), which allows for more code reuse between
      * the encryption and decryption code, but requires separate setup for both.
